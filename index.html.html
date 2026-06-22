@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deuses do Grill | A Hamburgueria do Olimpo em Taubaté</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* ================= Variavéis de Cores e Configurações ================= */
+        :root {
+            --gold: #D4AF37;
+            --gold-hover: #F1C40F;
+            --orange: #FF8C00;
+            --orange-hover: #FF6500;
+            --black: #111111;
+            --dark-gray: #1E1E1E;
+            --text-light: #E0E0E0;
+            --white: #FFFFFF;
+            --font-title: 'Bebas Neue', sans-serif;
+            --font-text: 'Montserrat', sans-serif;
+        }
+
+        /* ================= Reset e Base ================= */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-text);
+            background-color: var(--black);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-title);
+            letter-spacing: 2px;
+            color: var(--white);
+            text-transform: uppercase;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ================= Botões ================= */
+        .btn {
+            display: inline-block;
+            font-family: var(--font-title);
+            font-size: 1.5rem;
+            padding: 12px 30px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            letter-spacing: 1px;
+            border: none;
+        }
+
+        .btn-gold {
+            background: linear-gradient(135deg, var(--gold), var(--orange));
+            color: var(--black);
+        }
+
+        .btn-gold:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
+            background: linear-gradient(135deg, var(--gold-hover), var(--orange-hover));
+        }
+
+        /* ================= Header ================= */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 8px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            width: 80px;
+            height: auto;
+            display: block;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 18px;
+        }
+
+        .nav-links a {
+            color: var(--black);
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--orange);
+        }
+
+        .header-cta {
+            font-size: 1rem;
+            padding: 6px 16px;
+        }
+
+        /* ================= Hero Section ================= */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(17, 17, 17, 0.8), rgba(17, 17, 17, 0.9)), 
+                        url('https://images.unsplash.com/photo-1550547660-d9450f859349?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            padding-top: 80px;
+        }
+
+        .hero h1 {
+            font-size: 5rem;
+            margin-bottom: 20px;
+            color: var(--gold);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            color: var(--text-light);
+        }
+
+        /* ================= Seções Gerais ================= */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 50px;
+            color: var(--gold);
+        }
+
+        /* ================= Diferenciais ================= */
+        .diferenciais-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            text-align: center;
+        }
+
+        .diferencial-card {
+            background-color: var(--dark-gray);
+            padding: 40px 20px;
+            border-radius: 10px;
+            border-bottom: 4px solid var(--orange);
+            transition: transform 0.3s ease;
+        }
+
+        .diferencial-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .diferencial-card i {
+            font-size: 3rem;
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+
+        .diferencial-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        .diferencial-card p {
+            font-size: 0.9rem;
+        }
+
+        /* ================= Cardápio ================= */
+        #cardapio {
+            background-color: #151515;
+        }
+
+        .cardapio-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .item-card {
+            background-color: var(--dark-gray);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .item-card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+        }
+
+        .item-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .item-content {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .item-content h3 {
+            font-size: 2rem;
+            color: var(--gold);
+            margin-bottom: 10px;
+        }
+
+        .item-content p {
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .item-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: auto;
+        }
+
+        .price {
+            font-family: var(--font-title);
+            font-size: 2rem;
+            color: var(--white);
+        }
+
+        .btn-pedir {
+            font-size: 1.2rem;
+            padding: 8px 20px;
+        }
+
+        /* ================= Monte do Seu Jeito ================= */
+        .passos-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            text-align: center;
+        }
+
+        .passo {
+            padding: 20px;
+        }
+
+        .passo-numero {
+            width: 60px;
+            height: 60px;
+            background-color: var(--orange);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-title);
+            font-size: 2rem;
+            margin: 0 auto 20px;
+        }
+
+        .passo h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        /* ================= Depoimentos ================= */
+        #depoimentos {
+            background-color: #151515;
+        }
+
+        .depoimentos-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .depoimento-card {
+            background-color: var(--dark-gray);
+            padding: 30px;
+            border-radius: 10px;
+            position: relative;
+        }
+
+        .depoimento-card::before {
+            content: '\201C';
+            font-family: Georgia, serif;
+            font-size: 4rem;
+            color: var(--gold);
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            opacity: 0.3;
+        }
+
+        .estrelas {
+            color: var(--gold);
+            margin-bottom: 15px;
+        }
+
+        .cliente-nome {
+            font-family: var(--font-title);
+            color: var(--orange);
+            margin-top: 15px;
+            font-size: 1.2rem;
+        }
+
+        /* ================= Localização e Sobre ================= */
+        .localizacao-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .localizacao-texto h2 {
+            font-size: 3rem;
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+
+        .localizacao-texto p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .info-local {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        .info-local i {
+            color: var(--orange);
+            font-size: 1.5rem;
+        }
+
+        .mapa-container iframe {
+            width: 100%;
+            height: 400px;
+            border-radius: 10px;
+            border: 2px solid var(--gold);
+        }
+
+        /* ================= CTA Final ================= */
+        .cta-final {
+            background: linear-gradient(rgba(212, 175, 55, 0.9), rgba(255, 140, 0, 0.9)), 
+                        url('https://images.unsplash.com/photo-1544025162-d76694265947?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover fixed;
+            text-align: center;
+            padding: 100px 20px;
+            color: var(--black);
+        }
+
+        .cta-final h2 {
+            font-size: 4rem;
+            color: var(--black);
+            margin-bottom: 20px;
+        }
+
+        .cta-final p {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 40px;
+        }
+
+        .cta-final .btn {
+            background: var(--black);
+            color: var(--gold);
+        }
+
+        .cta-final .btn:hover {
+            background: var(--dark-gray);
+            color: var(--white);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+        }
+
+        /* ================= Footer ================= */
+        footer {
+            background-color: #000;
+            padding: 50px 0 20px;
+            border-top: 1px solid #333;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h3 {
+            color: var(--gold);
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a:hover {
+            color: var(--orange);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-icons a {
+            width: 40px;
+            height: 40px;
+            background-color: var(--dark-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+        }
+
+        .social-icons a:hover {
+            background-color: var(--orange);
+            color: var(--white);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+            font-size: 0.9rem;
+            color: #888;
+        }
+
+        /* ================= Botão Flutuante WhatsApp ================= */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 35px;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+            z-index: 1000;
+            transition: transform 0.3s ease;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
+
+        /* ================= Responsividade ================= */
+        @media (max-width: 992px) {
+            .diferenciais-grid, .cardapio-grid, .passos-grid, .depoimentos-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .localizacao-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero h1 { font-size: 4rem; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; } 
+            .hero h1 { font-size: 3.5rem; }
+            .footer-grid { grid-template-columns: 1fr; text-align: center; }
+            .social-icons { justify-content: center; }
+        }
+
+        @media (max-width: 576px) {
+            .diferenciais-grid, .cardapio-grid, .passos-grid, .depoimentos-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero h1 { font-size: 2.8rem; }
+            .section-title { font-size: 2.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-content">
+            <a href="#" class="logo">
+                <img src="https://i.postimg.cc/SRLGtNks/logo-deuses-do-grill.jpg" alt="Deuses do Grill Logo">
+            </a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#diferenciais">A Lenda</a></li>
+                    <li><a href="#cardapio">Cardápio do Olimpo</a></li>
+                    <li><a href="#depoimentos">Súditos</a></li>
+                    <li><a href="#localizacao">Templo</a></li>
+                </ul>
+            </nav>
+            <a href="https://wa.me/5512997256930" target="_blank" class="btn btn-gold header-cta">
+                <i class="fa-brands fa-whatsapp"></i> Pedir Agora
+            </a>
+        </div>
+    </header>
+
+    <section class="hero" id="hero">
+        <div class="container">
+            <h1>Sabor que desafia os Deuses</h1>
+            <p>Experimente a lenda urbanizada. Hambúrgueres artesanais premium forjados no fogo do Olimpo, direto para matar a sua fome em Taubaté.</p>
+            <a href="https://wa.me/5512997256930" target="_blank" class="btn btn-gold">
+                Invocar meu Pedido pelo WhatsApp <i class="fa-solid fa-bolt"></i>
+            </a>
+        </div>
+    </section>
+
+    <section id="diferenciais">
+        <div class="container">
+            <h2 class="section-title">Por que somos lendários?</h2>
+            <div class="diferenciais-grid">
+                <div class="diferencial-card">
+                    <i class="fa-solid fa-fire"></i>
+                    <h3>Fogo de Hefesto</h3>
+                    <p>Carnes grelhadas na brasa com técnica ancestral, garantindo um defumado impossível de copiar.</p>
+                </div>
+                <div class="diferencial-card">
+                    <i class="fa-solid fa-leaf"></i>
+                    <h3>Néctar e Ambrosia</h3>
+                    <p>Selecionamos ingredientes divinos e frescos diariamente. Da horta direto para o seu pão.</p>
+                </div>
+                <div class="diferencial-card">
+                    <i class="fa-solid fa-wind"></i>
+                    <h3>Velocidade de Hermes</h3>
+                    <p>Seu pedido voa até a sua casa. Entrega ágil e embalagens térmicas para a melhor experiência.</p>
+                </div>
+                <div class="diferencial-card">
+                    <i class="fa-solid fa-crown"></i>
+                    <h3>Ouro de Midas</h3>
+                    <p>Molhos rústicos secretos que transformam qualquer mordida em uma verdadeira preciosidade.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="cardapio">
+        <div class="container">
+            <h2 class="section-title">O Banquete dos Deuses</h2>
+            <div class="cardapio-grid">
+                <div class="item-card">
+                    <img src="https://i.postimg.cc/7LbTTPRV/mega-cheddar-bacon-carvalho-burguer-foto-divulgacao.webp" alt="Hambúrguer Zeus Supremo" class="item-img">
+                    <div class="item-content">
+                        <h3>Zeus Supremo</h3>
+                        <p>O soberano. Pão brioche selado, blend de costela 180g na brasa, duplo cheddar inglês, bacon crocante em tiras e maionese defumada.</p>
+                        <div class="item-footer">
+                            <span class="price">R$ 31,00</span>
+                            <a href="https://wa.me/5512997256930" target="_blank" class="btn btn-gold btn-pedir">Pedir</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item-card">
+                    <img src="https://i.postimg.cc/KYnhfBCy/shutterstock-1962816295.jpg" alt="Hambúrguer Poseidon Fresh" class="item-img">
+                    <div class="item-content">
+                        <h3>Poseidon Fresh</h3>
+                        <p>A força dos mares. Pão australiano, blend bovino 160g, queijo prato derretido, cebola roxa marinada, alface americana e molho tártaro artesanal.</p>
+                        <div class="item-footer">
+                            <span class="price">R$ 29,00</span>
+                            <a href="https://wa.me/5512997256930" target="_blank" class="btn btn-gold btn-pedir">Pedir</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item-card">
+                    <img src="https://i.postimg.cc/25NP13yK/images.jpg" alt="Hambúrguer Afrodite" class="item-img">
+                    <div class="item-content">
+                        <h3>Afrodite</h3>
+                        <p>Amor à primeira mordida. Pão brioche, blend 160g, queijo brie empanado, geleia de pimenta com frutas vermelhas e rúcula fresca.</p>
+                        <div class="item-footer">
+                            <span class="price">R$ 32,00</span>
+                            <a href="https://wa.me/5512997256930" target="_blank" class="btn btn-gold btn-pedir">Pedir</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item-card">
+                    <img src="https://i.postimg.cc/xTWZZqvG/images.jpg" alt="Combo Amor dos Deuses" class="item-img">
+                    <div class="item-content">
+                        <h3>Combo Amor dos Deuses</h3>
+                        <p>Para dividir com sua alma gêmea. 2 hambúrgueres clássicos + 1 porção de batata média rústica + 2 refrigerantes ou sucos naturais.</p>
+                        <div class="item-footer">
+                            <span class="price">R$ 64,00</span>
+                            <a href="https://wa.me/5512997256930" target="_blank" class="btn btn-gold btn-pedir">Pedir</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item-card">
+                    <img src="https://i.postimg.cc/hG03hrHp/images.jpg" alt="Combo Banquete do Olimpo" class="item-img">
+                    <div class="item-content">
+                        <h3>Banquete do Olimpo</h3>
+                        <p>Para matar a fome dos titãs. 4 hambúrgueres à escolha + 1 batata grande + 1 onion rings média + 4 refrigerantes ou sucos.</p>
+                        <div class="item-footer">
+                            <span class="price">R$ 120,00</span>
+                            <a href="https://wa.me/5512997256930" target="_blank" class="btn btn-gold btn-pedir">Pedir</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item-card">
+                    <img src="https://i.postimg.cc/nLn38mMy/images.jpg" alt="Onion Rings" class="item-img">
+                    <div class="item-content">
+                        <h3>Onion Rings (Anéis de Cronos)</h3>
+                        <p>160g de anéis de cebola incrivelmente crocantes, empanados com temperos secretos. Acompanha molho de alho suave da casa.</p>
+                        <div class="item-footer">
+                            <span class="price">R$ 18,00</span>
+                            <a href="https://wa.me/5512997256930" target="_blank" class="btn btn-gold btn-pedir">Pedir</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="monte">
+        <div class="container">
+            <h2 class="section-title">Forje Seu Próprio Destino</h2>
+            <div class="passos-grid">
+                <div class="passo">
+                    <div class="passo-numero">1</div>
+                    <h3>O Pão Sagrado</h3>
+                    <p>Brioche, Australiano, Gergelim ou Pão sem glúten.</p>
+                </div>
+                <div class="passo">
+                    <div class="passo-numero">2</div>
+                    <h3>A Carne</h3>
+                    <p>Blend Bovino, Frango Empanado, Costela ou Vegetariano do Bosque.</p>
+                </div>
+                <div class="passo">
+                    <div class="passo-numero">3</div>
+                    <h3>Queijos e Ouro</h3>
+                    <p>Cheddar, Prato, Brie, Bacon, Cebola Caramelizada.</p>
+                </div>
+                <div class="passo">
+                    <div class="passo-numero">4</div>
+                    <h3>O Néctar (Molhos)</h3>
+                    <p>Maionese Verde, Barbecue Rústico, Mostarda e Mel, Tártaro.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="depoimentos">
+        <div class="container">
+            <h2 class="section-title">Palavras dos Mortais</h2>
+            <div class="depoimentos-grid">
+                <div class="depoimento-card">
+                    <div class="estrelas"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                    <p>"Sem dúvidas o melhor hambúrguer de Taubaté! A carne vem num ponto perfeito e o sabor de defumado é surreal."</p>
+                    <div class="cliente-nome">Lucas M. - 22 anos</div>
+                </div>
+                <div class="depoimento-card">
+                    <div class="estrelas"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                    <p>"O combo Banquete do Olimpo salvou o rolê da galera no sábado. Chegou super rápido e quentinho."</p>
+                    <div class="cliente-nome">Mariana S. - 28 anos</div>
+                </div>
+                <div class="depoimento-card">
+                    <div class="estrelas"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i></div>
+                    <p>"Pedi o Afrodite e fiquei apaixonada pela mistura do queijo brie com a geleia. Um verdadeiro manjar!"</p>
+                    <div class="cliente-nome">Camila R. - 25 anos</div>
+                </div>
+                <div class="depoimento-card">
+                    <div class="estrelas"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                    <p>"Atendimento nota 10 pelo WhatsApp, muito ágeis e a embalagem mantém o lanche intacto. Parabéns!"</p>
+                    <div class="cliente-nome">Felipe T. - 34 anos</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="localizacao">
+        <div class="container">
+            <div class="localizacao-grid">
+                <div class="localizacao-texto">
+                    <h2>Nosso Templo no Gurilândia</h2>
+                    <p>A Deuses do Grill nasceu com um propósito: trazer a força do fogo e a suculência dos deuses para as ruas de Taubaté. Somos apaixonados pela mitologia e, principalmente, por fazer hambúrgueres de verdade.</p>
+                    <p>Não usamos conservantes. Tudo é preparado no dia, com carinho artesanal, para garantir que sua experiência seja mítica.</p>
+                    <br>
+                    <div class="info-local">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <span>Bairro Gurilândia, Taubaté - SP (Delivery e Retirada)</span>
+                    </div>
+                    <div class="info-local">
+                        <i class="fa-solid fa-clock"></i>
+                        <span>Terça a Domingo: 18h30 às 23h30</span>
+                    </div>
+                </div>
+                <div class="mapa-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14674.87788417978!2d-45.545!3d-23.033!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ccf84288b8af3b%3A0x6b2b467f5dbf57ab!2sGuril%C3%A2ndia%2C%20Taubat%C3%A9%20-%20SP!5e0!3m2!1spt-BR!2sbr!4v1680000000000!5m2!1spt-BR!2sbr" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-final">
+        <div class="container">
+            <h2>A Fome é um monstro. Deixe os Deuses cuidarem dela.</h2>
+            <p>Não deixe para amanhã a vontade que você pode saciar hoje. Faça seu pedido agora mesmo.</p>
+            <a href="https://wa.me/5512997256930" target="_blank" class="btn">
+                <i class="fa-brands fa-whatsapp"></i> Chamar no WhatsApp
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>Deuses do Grill</h3>
+                    <p>A melhor hamburgueria artesanal de Taubaté, entregando sabor lendário direto na sua porta.</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Links Rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="#cardapio">Cardápio</a></li>
+                        <li><a href="#monte">Monte seu Lanche</a></li>
+                        <li><a href="#localizacao">Nossa História</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Redes Sociais</h3>
+                    <div class="social-icons">
+                        <a href="#" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
+                        <a href="#" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2023 Deuses do Grill - Todos os direitos reservados. CNPJ Fictício 00.000.000/0001-00</p>
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/5512997256930" target="_blank" class="whatsapp-float">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const links = document.querySelectorAll('a[href^="#"]');
+            
+            for (const link of links) {
+                link.addEventListener("click", function(e) {
+                    const targetId = this.getAttribute("href");
+                    
+                    // Se for apenas "#" ignoramos
+                    if (targetId === "#") return;
+
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        e.preventDefault();
+                        
+                        // Scroll nativo (funciona na maioria dos navegadores e iframes modernos)
+                        targetElement.scrollIntoView({
+                            behavior: "smooth",
+                            block: "start"
+                        });
+                        
+                        // Fix adicional para Google Sites: 
+                        // Envia uma mensagem para o parent alertando que houve uma mudança de foco/âncora
+                        try {
+                            window.parent.postMessage({
+                                type: 'scroll',
+                                target: targetId
+                            }, '*');
+                        } catch (err) {
+                            console.log("Comunicação com parent window bloqueada. Scroll local executado.");
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
